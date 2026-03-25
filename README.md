@@ -1,109 +1,65 @@
-# Dockerized Flask Application
+# Flask Docker Production Deployment
 
 ## Overview
 
-This project demonstrates how to containerize a simple Flask web application using Docker. The application runs inside a Docker container and can be accessed through a web browser using port mapping.
+This project demonstrates containerization and production-oriented deployment of a Flask application using Docker and Gunicorn. The focus is on creating a lightweight, reproducible, and scalable backend service.
 
-The purpose of this project is to understand the Docker workflow, including building images, running containers, and managing the container lifecycle.
+## Tech Stack
 
----
-
-## Technologies Used
-
-* Python
-* Flask
+* Python (Flask)
 * Docker
-* Ubuntu
+* Gunicorn
+* Linux
 
----
+## Key Capabilities
+
+* Containerized application using Docker
+* Production-ready WSGI server (Gunicorn)
+* Isolated and reproducible runtime environment
+* Port-based service exposure
 
 ## Project Structure
 
 ```
-docker-flask-app
-│
-├── Dockerfile
-├── app.py
-├── requirements.txt
-└── README.md
+app/
+Dockerfile
+requirements.txt
 ```
 
----
+## Build and Run
 
-## Application Description
-
-The Flask application is a minimal web server that returns a simple message when accessed through the browser.
-
-Example output:
+### Clone Repository
 
 ```
-Hello from Docker Container!
+git clone <repo-url>
+cd flask-docker-production-deployment
 ```
 
----
-
-## Dockerfile Explanation
-
-The Dockerfile defines how the application container image is built.
-
-* **FROM python:3.10** – Uses the official Python base image.
-* **WORKDIR /app** – Sets the working directory inside the container.
-* **COPY . /app** – Copies project files into the container.
-* **RUN pip install -r requirements.txt** – Installs application dependencies.
-* **EXPOSE 5000** – Exposes port 5000 for external access.
-* **CMD ["python", "app.py"]** – Starts the Flask application.
-
----
-
-## How to Run the Project
-
-### Build the Docker Image
+### Build Image
 
 ```
-docker build -t flask-docker-app .
+docker build -t flask-app .
 ```
 
-### Run the Docker Container
+### Run Container
 
 ```
-docker run -d -p 5000:5000 flask-docker-app
+docker run -p 5000:5000 flask-app
 ```
 
-### Access the Application
+## Output
 
-Open the browser and visit:
-
-```
-http://localhost:5000
-```
-
----
-
-## Docker Commands Used
-
-| Command      | Description                            |
-| ------------ | -------------------------------------- |
-| docker build | Build a Docker image from a Dockerfile |
-| docker run   | Run a container from an image          |
-| docker ps    | List running containers                |
-| docker logs  | View container logs                    |
-| docker stop  | Stop a running container               |
-| docker rm    | Remove a container                     |
-| docker rmi   | Remove a Docker image                  |
-
----
+* Application accessible at: http://localhost:5000
+* Add runtime screenshots here
 
 ## Learning Outcomes
 
-* Understanding containerization concepts
-* Writing and structuring a Dockerfile
-* Building Docker images
-* Running containers and mapping ports
-* Managing containers using Docker commands
+* Containerization of backend services
+* Production deployment using Gunicorn
+* Docker image lifecycle management
 
----
+## Possible Enhancements
 
-## Author
-
-Sanyam Jain
-MCA Student | Cloud Computing Enthusiast
+* Add CI/CD pipeline for automated builds
+* Deploy on Kubernetes or cloud container services
+* Integrate logging and monitoring
